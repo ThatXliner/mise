@@ -349,10 +349,12 @@ impl Settings {
     pub fn env_files(&self) -> Vec<PathBuf> {
         let mut files = vec![];
         if let Some(cwd) = &*dirs::CWD {
-            if let Some(env_file) = &self.env_file {
-                let env_file = env_file.to_string_lossy().to_string();
-                for p in FindUp::new(cwd, &[env_file]) {
-                    files.push(p);
+            if let Some(env_files) = &self.env_files {
+                for file in env_files {
+                    let file = file.to_string_lossy().to_string();
+                    for p in FindUp::new(cwd, &[file]) {
+                        files.push(p);
+                    }
                 }
             }
         }

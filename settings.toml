@@ -297,11 +297,11 @@ Multiple envs can be set by separating them with a comma, e.g. `MISE_ENV=ci,test
 They will be read in order, with the last one taking precedence.
 """
 
-[env_file]
-env = "MISE_ENV_FILE"
-type = "Path"
+[env_files]
+env = "MISE_ENV_FILES"
+type = "ListPath"
 optional = true
-description = "Path to a file containing environment variables to automatically load."
+description = "Path to a list of files containing environment variables to automatically load."
 
 [erlang.compile]
 env = "MISE_ERLANG_COMPILE"
